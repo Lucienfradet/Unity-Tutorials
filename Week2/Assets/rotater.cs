@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class rotater : MonoBehaviour {
     //static const double ROTATION_SPEED = 0.1D;
+    public GameObject player;
     public float rotationSpeedY = 0.8f;
 
     // Start is called before the first frame update
