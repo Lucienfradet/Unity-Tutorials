@@ -9,6 +9,7 @@ public class PickerUpper : MonoBehaviour
     public AudioSource audio;
     public AudioClip pickUpAudio;
     public AudioClip lurkerAudio;
+    public GameObject particleSystem;
 
     void Start()
     {
@@ -25,6 +26,7 @@ public class PickerUpper : MonoBehaviour
     {
         if (collision.collider.gameObject.CompareTag("pickUp"))
         {
+            particleGo(collision);
             GameObject.Destroy(collision.collider.gameObject);
             counter++;
             Debug.Log("amount of gems picked up :" + counter);
@@ -37,5 +39,10 @@ public class PickerUpper : MonoBehaviour
             audio.PlayOneShot(lurkerAudio);
             Debug.Log("collided with luker");
         }
+    }
+
+    private void particleGo(Collision collision)
+    {
+        GameObject.Instantiate(particleSystem, collision.collider.gameObject.transform.position, Quaternion.identity);
     }
 }
